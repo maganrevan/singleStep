@@ -10,6 +10,8 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var wanderLabel: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,21 @@ class ViewController: NSViewController {
         }
     }
 
-
+    @IBAction func stepDownClicked(_ sender: NSButton) {
+        print(self.view.frame.height)
+        
+        if(wanderLabel.frame.origin.y >= 0){
+            wanderLabel.frame.origin.y = wanderLabel.frame.origin.y - 1
+        }
+        else{
+            wanderLabel.frame.origin.y = self.view.frame.height
+        }
+        
+    }
+    
+    @IBAction func closeApplication(_ sender: NSButton) {
+        NSApplication.shared.terminate(self)
+    }
+    
 }
 
